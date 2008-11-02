@@ -1,26 +1,24 @@
-ValidatesNotOverlapping
-=======================
+= ValidatesNotOverlapping
 
 This plugin is meant to simplify models related to the reservation of physical resources.
 
 
-Example
-=======
+= Example
 
 The plugin provides one class validation method for your ActiveRecord models:
 
-validates_not_overlapping(start_attribute, finish_attribute, options)
+	validates_not_overlapping(start_attribute, finish_attribute, options)
 
-Valid options:
+== Valid options:
 * :message -- lets you specify a custom error message
 * :allow_equal_endpoints -- lets you set whether endpoints of 2 models can be equal (default value: false)
 * :scope -- scope the comparison to an attribute or method when passed a symbol, also can take a string (with delayed interpolation) for more complicated scopes
 
-class CarRental < ActiveRecord::Base
-	validates_not_overlapping :start, :finish,
-		:scope => :car_id,
-		:message => 'has already been rented during this time.'
-end
+	class CarRental < ActiveRecord::Base
+		validates_not_overlapping :start, :finish,
+			:scope => :car_id,
+			:message => 'has already been rented during this time.'
+	end
 
 
 Copyright (c) 2008 Jake Howerton, released under the MIT license
