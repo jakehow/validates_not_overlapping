@@ -2,22 +2,10 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-desc 'Default: run unit tests.'
-task :default => :test
-
-desc 'Test the validates_not_overlapping plugin.'
-Rake::TestTask.new(:test) do |t|
+require 'spec/rake/spectask'
+ 
+desc 'Run specs.'
+Spec::Rake::SpecTask.new(:spec) do |t|
   t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
   t.verbose = true
-end
-
-desc 'Generate documentation for the validates_not_overlapping plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'ValidatesNotOverlapping'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
-  rdoc.rdoc_files.include('lib/**/*.rb')
 end
