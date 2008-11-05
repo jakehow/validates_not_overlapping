@@ -16,7 +16,7 @@ The plugin provides one class validation method for your ActiveRecord models:
 
 	class CarRental < ActiveRecord::Base
 		validates_not_overlapping :start, :finish,
-			:scope => :car_id,
+			:scope => :car_id, # could also be expressed as: :scope => '`car_rentals`.car_id = #{car_id}'
 			:message => 'has already been rented during this time.'
 	end
 

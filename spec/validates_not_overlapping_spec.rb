@@ -177,6 +177,13 @@ describe 'Booking with scope string' do
     new_booking.should_not be_valid
   end
   
+  it "is invalid if record exists with: start on current's start and finish unset" do
+    BookingScopedString.delete_all
+    BookingScopedString.create(:start => @start, :room_id => 1)
+    new_booking = BookingScopedString.new(:start => @start, :room_id => 1)
+    new_booking.should_not be_valid
+  end
+  
   after(:all) do
     BookingScopedString.delete_all
   end

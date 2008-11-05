@@ -43,7 +43,7 @@ module ValidatesNotOverlapping
         Array(scope).map do |scope_item|
           case scope_item
           when String
-            condition_sql << " AND" + record.send(:interpolate_sql, scope_item)
+            condition_sql << " AND " + record.send(:interpolate_sql, scope_item)
           when Symbol
             scope_value = record.send(scope_item)
             condition_sql << " AND #{record.class.quoted_table_name}.#{scope_item} = :#{scope_item}"
